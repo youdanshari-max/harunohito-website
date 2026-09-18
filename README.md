@@ -57,3 +57,24 @@ python3 -m http.server 4173 --bind 127.0.0.1 --directory dist
 OSの `prefers-reduced-motion` に対応し、設定時は静止表示にします。
 通常表示では「動きを止める」ボタンで、桜・文字・出現の進行を一時停止できます。
 JavaScriptが動かない場合も、女の子・ブランド名・肩書きは表示されます。
+
+## 同じWi-FiのiPhoneで確認する
+
+既存のプレビューを停止してから、プロジェクトフォルダで次を実行します。
+`MAC_WIFI_IP/PREFIX` はMacのWi-Fiアドレスとサブネットの長さ（例: `192.168.1.7/24`）に置き換えます。
+アドレスは `ipconfig getifaddr en0`、ネットマスクは `ipconfig getoption en0 subnet_mask` で確認できます。
+ネットマスクが `255.255.255.0` なら `/24` です。
+
+```sh
+python3 preview.py --lan MAC_WIFI_IP/PREFIX
+```
+
+PCは `http://127.0.0.1:4173/`、iPhoneのSafariは `http://MAC_WIFI_IP:4173/` で確認します。
+Macと同じWi-Fiにつなぎ、Macを起動したままにしてください。停止はCtrl+C。
+Wi-Fiのアドレスが変わった場合はサーバーを起動し直します。
+`python3 preview.py` だけなら、このMacのみで確認できます。
+
+この確認用サーバーは `dist` のみを表示し、接続元をlocalhostと指定サブネットに限定します。
+画像が同時に読み込まれる際の接続待ちを増やし、取りこぼしを防ぎます。
+ルーターのポート転送、トンネル、インターネット公開は設定しません。
+ゲストWi-Fiなど端末間の通信が禁止されているネットワークでは接続できません。

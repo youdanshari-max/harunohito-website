@@ -20,6 +20,10 @@ const positions = [
   [790,140], [1330,540], [560,230], [1610,970],
   [1120,945], [400,710], [1440,1010], [1010,70],
   [1610,620], [570,40],
+  [470,90], [1350,80], [610,800], [1530,200],
+  [520,530], [1430,880], [860,260], [1250,430],
+  [730,980], [1510,710], [1190,175], [520,760],
+  [1350,1020], [650,310],
 ];
 const container = document.querySelector('.petals');
 const percent = (value, total) => `${value / total * 100}%`;
@@ -30,6 +34,7 @@ container.style.clipPath = `polygon(evenodd, 0% 0%, 100% 0%, 100% 100%, 0% 100%,
   ${percent(f.right,1920)} ${percent(f.bottom,1080)},
   ${percent(f.right,1920)} ${percent(f.top,1080)},
   ${percent(f.left,1920)} ${percent(f.top,1080)}, 0% 0%)`;
+let mobileIndex = 0;
 for (const [index, [x, y]] of positions.entries()) {
   const source = index % sourceBounds.length;
   const [left, top, right, bottom] = sourceBounds[source];
@@ -49,16 +54,19 @@ for (const [index, [x, y]] of positions.entries()) {
   }
   const layer = document.createElement('div');
   layer.className = 'petal';
-  layer.dataset.mobile = String(index < 22);
+  const mobile = index < 22 || (index >= 34 && index < 42);
+  layer.dataset.mobile = String(mobile);
   layer.dataset.envelope = JSON.stringify(envelope);
-  const delay = index === 0 ? 0 : 1.2 + index * 1.6;
+  const delay = index === 0 ? 0 : 1.2 + index * 1.4;
   const turn = 7 + index % 5 * 2;
   const angle = (index * 37 % 110) - 55;
   const styles = {
     '--origin': `${percent(cx,1920)} ${percent(cy,1080)}`,
     '--offset-x': percent(x-cx,1920), '--offset-y': percent(y-cy,1080),
     '--scale': String(scale), '--angle': `${angle}deg`,
-    '--delay': `${delay}s`, '--duration': `${15 + index * 3 % 9}s`,
+    '--delay': `${delay}s`,
+    '--mobile-delay': `${mobileIndex === 0 ? 0 : 1.2 + mobileIndex * 1.4}s`,
+    '--duration': `${(15 + index * 3 % 9) / 1.25}s`,
     '--phase': `${-index * 1.7}s`,
     '--dx': percent(dx,1920), '--dy': percent(dy,1080),
     '--dx-mid': percent(dx * -.35,1920), '--dy-mid': percent(dy * .45,1080),
@@ -76,6 +84,7 @@ for (const [index, [x, y]] of positions.entries()) {
   drift.append(image);
   layer.append(drift);
   container.append(layer);
+  if (mobile) mobileIndex += 1;
 }
 const toggle = document.querySelector('.motion-toggle');
 toggle.hidden = false;
