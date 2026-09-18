@@ -102,47 +102,24 @@ for (const [index, [x, y]] of positions.entries()) {
   container.append(layer);
   if (mobile) mobileIndex += 1;
 }
-const toggle = document.querySelector('.motion-toggle');
-const view = document.querySelector('.first-view');
 const nameLetters = [...document.querySelectorAll('#brand-name > span > span')];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const replayInterval = 21000; // The last letter finishes at ~6.9s, then rests ~14s.
 let replayTimer;
-let remaining = replayInterval;
-let scheduledAt;
 
 function scheduleNameReplay() {
-  if (reducedMotion.matches || view.classList.contains('is-paused')) return;
-  scheduledAt = performance.now();
+  if (reducedMotion.matches) return;
   replayTimer = setTimeout(() => {
     // Restart the original CSS animation, including its easing and letter delays.
     for (const letter of nameLetters) letter.style.animation = 'none';
     void nameLetters[0].offsetWidth;
     for (const letter of nameLetters) letter.style.removeProperty('animation');
-    remaining = replayInterval;
     scheduleNameReplay();
-  }, remaining);
-}
-
-function pauseNameReplay() {
-  if (replayTimer === undefined) return;
-  clearTimeout(replayTimer);
-  replayTimer = undefined;
-  remaining = Math.max(0, remaining - (performance.now() - scheduledAt));
+  }, replayInterval);
 }
 
 reducedMotion.addEventListener('change', () => {
-  pauseNameReplay();
-  remaining = replayInterval;
+  clearTimeout(replayTimer);
   scheduleNameReplay();
 });
 scheduleNameReplay();
-toggle.hidden = false;
-toggle.addEventListener('click', () => {
-  const paused = view.classList.toggle('is-paused');
-  if (paused) pauseNameReplay();
-  else scheduleNameReplay();
-  toggle.setAttribute('aria-pressed', String(paused));
-  toggle.querySelector('.motion-label').textContent = paused ? '動きを再開する' : '動きを止める';
-  toggle.querySelector('.motion-symbol').textContent = paused ? '▷' : 'Ⅱ';
-});

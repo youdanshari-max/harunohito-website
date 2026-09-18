@@ -1,7 +1,6 @@
-/* Independent of the petals and brand replay. Only the stop preference is shared. */
+/* Independent of the petals and brand replay. Respects OS motion preference and desktop-only visibility. */
 (() => {
-  const view = document.querySelector('.first-view');
-  const toggle = document.querySelector('.motion-toggle');
+  const mobile = window.matchMedia('(max-width: 700px)');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const companions = [...document.querySelectorAll('.companion')];
   let ready = [];
@@ -10,7 +9,7 @@
   let lastCompanion = null;
   let lastBlinkAt = 0;
 
-  const canBlink = () => !reduced.matches && !document.hidden && !view.classList.contains('is-paused');
+  const canBlink = () => !reduced.matches && !document.hidden && !mobile.matches;
 
   function stop() {
     clearTimeout(blinkTimer);
@@ -43,8 +42,8 @@
     schedule(8500 + Math.random() * 3000);
   }
 
-  // main.js updates the existing stop button first. Resume with a quiet interval.
-  toggle.addEventListener('click', sync);
+  // Resume with a quiet interval when returning to the desktop layout.
+  mobile.addEventListener('change', sync);
   reduced.addEventListener('change', sync);
   document.addEventListener('visibilitychange', sync);
 

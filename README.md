@@ -28,7 +28,7 @@ python3 -m http.server 4173 --bind 127.0.0.1 --directory dist
 - `dist/index.html`: ブランド名、肩書き、ページ情報。
 - `dist/styles/main.css`: 色、文字サイズ、配置、PC・スマートフォンの表示。
 - `dist/scripts/main.js`: 桜の配置・出現間隔・速度・移動量・回転・顔の禁止エリア。
-- `dist/scripts/companions.js`: 左下の2人の目ぱち、時間差、停止への対応。
+- `dist/scripts/companions.js`: PC左下の2人の目ぱち、時間差、OS設定・画面幅への対応。
 - `docs/assets.json`: 原本と表示用コピーの対応、SHA-256。
 - `docs/design-notes.md`: 試作の意図と調整方法。
 
@@ -56,9 +56,9 @@ python3 -m http.server 4173 --bind 127.0.0.1 --directory dist
 ## 動きを減らす設定
 
 OSの `prefers-reduced-motion` に対応し、設定時は静止表示にします。
-通常表示では「動きを止める」ボタンで、桜・文字・出現の進行を一時停止できます。
-左下の2人の目ぱちも停止し、開き目の基本画像に戻ります。
-JavaScriptが動かない場合も、女の子・ブランド名・肩書き・左下の2人は表示されます。
+画面上の手動停止ボタンは設けていません。OS設定時はPC左下の2人の目ぱちも止まり、開き目の基本画像に戻ります。
+2人はPCで表示し、700px以下のスマートフォン表示では非表示にして目ぱちのタイマーも止めます。
+JavaScriptが動かない場合も、女の子・ブランド名・肩書き・PC左下の2人は表示されます。
 
 ## 同じWi-FiのiPhoneで確認する
 
