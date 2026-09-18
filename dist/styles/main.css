@@ -71,14 +71,15 @@ h1 > span > span:nth-child(5) { --letter: 4; }
   position: absolute;
   z-index: 1;
   left: calc(8.5% + clamp(3.85rem, 6.9vw, 7.7rem) * 1.6);
-  bottom: 1.9rem;
-  width: 295.2px;
+  bottom: .9rem;
+  width: 282px;
   height: 162px;
   pointer-events: none;
 }
 .companion { position: absolute; bottom: 0; aspect-ratio: 1; }
 .companion--yuu { left: 0; width: 162px; z-index: 1; }
-.companion--haru { left: 162px; bottom: 10.8px; width: 133.2px; }
+/* Haru's PNG has a few transparent pixels below the body; align the visible feet. */
+.companion--haru { left: 162px; bottom: -4px; width: 120px; }
 .companion img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
 /* Closed-mouth source files contain heads only. Keep the base/body fixed,
    and reveal just the eye area in the identical 1254 × 1254 coordinate frame. */

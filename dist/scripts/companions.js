@@ -17,13 +17,13 @@
     for (const companion of companions) companion.classList.remove('is-blinking');
   }
 
-  function schedule(delay = 6500 + Math.random() * 4000) {
+  function schedule(delay = 3250 + Math.random() * 2000) {
     if (!canBlink() || !ready.length) return;
     blinkTimer = setTimeout(() => {
       if (!canBlink()) return;
       let index = Math.floor(Math.random() * ready.length);
       // One blink at a time; avoid frequent repeats by the same character.
-      if (ready[index] === lastCompanion && performance.now() - lastBlinkAt < 9500 && ready.length > 1) {
+      if (ready[index] === lastCompanion && performance.now() - lastBlinkAt < 4750 && ready.length > 1) {
         index = (index + 1) % ready.length;
       }
       const companion = ready[index];
@@ -39,7 +39,7 @@
 
   function sync() {
     stop();
-    schedule(8500 + Math.random() * 3000);
+    schedule(4250 + Math.random() * 1500);
   }
 
   // Resume with a quiet interval when returning to the desktop layout.
