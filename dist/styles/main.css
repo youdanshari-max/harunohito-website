@@ -36,9 +36,9 @@ button { font: inherit; }
 h1 { margin: 0; font-size: clamp(3.85rem, 6.9vw, 7.7rem); line-height: 1.4; font-weight: 600; }
 h1 > span {
   display: flex;
-  gap: .075em;
-  /* Initial reveal ends at 6.88s; then rest 30s, breathe 4s, repeat. */
-  animation: name-breath 34s ease-in-out 6.9s infinite;
+  gap: var(--rest-gap, .075em);
+  /* Keep the initial reveal; after it, rest 27s and breathe for 5s. */
+  animation: name-breath 32s ease-in-out 6.9s infinite;
 }
 h1 > span > span {
   display: inline-block;
@@ -98,8 +98,8 @@ h1 > span > span:nth-child(5) { --letter: 4; }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes name-breath {
-  0%, 88.235294%, 100% { transform: translateY(0); }
-  94.117647% { transform: translateY(-.045em); }
+  0%, 84.375%, 100% { transform: translateY(0) scale(1); gap: var(--rest-gap, .075em); opacity: 1; }
+  92.1875% { transform: translateY(-.075em) scale(1.025); gap: .115em; opacity: .94; }
 }
 @keyframes petal-arrives { from { opacity: 0; } to { opacity: var(--opacity, .8); } }
 @keyframes petal-drift {
@@ -121,7 +121,8 @@ h1 > span > span:nth-child(5) { --letter: 4; }
   .brand-caption { font-size: .875rem; letter-spacing: .15em; margin: 0 0 1rem; }
   h1 { font-size: clamp(2.85rem, 12.2vw, 5.2rem); }
   h1 > span { justify-content: center; gap: .05em; }
-  .scene { width: 155%; left: -30%; top: auto; bottom: 13%; transform: none; }
+  .scene { width: 155%; left: -27%; top: auto; bottom: 13%; transform: none; }
+  h1 > span { --rest-gap: .05em; }
   .petal { animation-delay: var(--mobile-delay); }
   .petal[data-mobile="false"] { display: none; }
   .petal-drift { animation-name: petal-drift-mobile; }
@@ -130,7 +131,8 @@ h1 > span > span:nth-child(5) { --letter: 4; }
 @media (max-width: 700px) and (min-height: 900px) { .scene { bottom: 19%; } }
 @keyframes petal-drift-mobile {
   from { transform: translate(0, 0); }
-  to { transform: translate(var(--dx-mid), var(--dy-mid)); }
+  50% { transform: translate(var(--mobile-dx-mid), var(--mobile-dy-mid)); }
+  to { transform: translate(var(--mobile-dx), var(--mobile-dy)); }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; }

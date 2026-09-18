@@ -42,11 +42,21 @@ for (const [index, [x, y]] of positions.entries()) {
   const scale = .78 + (index * 7 % 6) * .085;
   const dx = (index % 2 ? -1 : 1) * (22 + index % 5 * 4);
   const dy = (index % 3 ? 1 : -1) * (18 + index % 4 * 5);
+  // On a small screen, a drift of a few canvas pixels is almost invisible.
+  // Move outward from the face so the larger mobile path stays clear of it.
+  const mobileDx = (x < 950 ? -1 : 1) * (85 + index % 5 * 13);
+  const mobileDy = (y < 595 ? -1 : 1) * (50 + index % 4 * 13);
   // The circle encloses every rotation; the envelope encloses every keyframe
   // and all interpolated positions, including the smaller mobile movement.
   const radius = Math.hypot(right - left, bottom - top) / 2 * scale + 3;
   const envelope = {left:x-radius-Math.abs(dx),right:x+radius+Math.abs(dx),
     top:y-radius-Math.abs(dy),bottom:y+radius+Math.abs(dy)};
+  const mobileEnvelope = {
+    left: Math.min(x, x + mobileDx) - radius,
+    right: Math.max(x, x + mobileDx) + radius,
+    top: Math.min(y, y + mobileDy) - radius,
+    bottom: Math.max(y, y + mobileDy) + radius,
+  };
   if (envelope.right >= f.left && envelope.left <= f.right &&
       envelope.bottom >= f.top && envelope.top <= f.bottom) {
     console.warn(`Petal ${index + 1} omitted: its path enters the protected face area.`);
@@ -54,9 +64,12 @@ for (const [index, [x, y]] of positions.entries()) {
   }
   const layer = document.createElement('div');
   layer.className = 'petal';
-  const mobile = index < 22 || (index >= 34 && index < 42);
+  const mobile = (index < 22 || (index >= 34 && index < 42)) && !(
+    mobileEnvelope.right >= f.left && mobileEnvelope.left <= f.right &&
+    mobileEnvelope.bottom >= f.top && mobileEnvelope.top <= f.bottom);
   layer.dataset.mobile = String(mobile);
   layer.dataset.envelope = JSON.stringify(envelope);
+  layer.dataset.mobileEnvelope = JSON.stringify(mobileEnvelope);
   const delay = index === 0 ? 0 : 1.2 + index * 1.4;
   const turn = 7 + index % 5 * 2;
   const angle = (index * 37 % 110) - 55;
@@ -66,10 +79,13 @@ for (const [index, [x, y]] of positions.entries()) {
     '--scale': String(scale), '--angle': `${angle}deg`,
     '--delay': `${delay}s`,
     '--mobile-delay': `${mobileIndex === 0 ? 0 : 1.2 + mobileIndex * 1.4}s`,
-    '--duration': `${(15 + index * 3 % 9) / 1.25}s`,
+    '--duration': `${(15 + index * 3 % 9) / 1.4}s`,
     '--phase': `${-index * 1.7}s`,
     '--dx': percent(dx,1920), '--dy': percent(dy,1080),
     '--dx-mid': percent(dx * -.35,1920), '--dy-mid': percent(dy * .45,1080),
+    '--mobile-dx': percent(mobileDx,1920), '--mobile-dy': percent(mobileDy,1080),
+    '--mobile-dx-mid': percent(mobileDx * .6,1920),
+    '--mobile-dy-mid': percent(mobileDy * .4,1080),
     '--turn-start': `${angle-turn}deg`, '--turn-end': `${angle+turn}deg`,
     '--opacity': `${.66 + index % 4 * .055}`,
   };
