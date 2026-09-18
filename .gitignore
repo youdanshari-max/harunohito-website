@@ -1,0 +1,17 @@
+.DS_Store
+node_modules/
+.sites-runtime/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+credentials*.json
+secrets*.json
+work/
+coverage/
+playwright-report/
+test-results/
+*.log
+
