@@ -9,6 +9,7 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23fffaf5'/%3E%3Cpath d='M8 24C4 13 12 6 24 7C25 18 20 26 8 24Z' fill='none' stroke='%23d8715f' stroke-width='2.5'/%3E%3Cpath d='m19 8 1 5 5-1' fill='none' stroke='%23d8715f' stroke-width='2.5'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="./styles/main.css">
     <script src="./scripts/main.js" defer></script>
+    <script src="./scripts/companions.js" defer></script>
   </head>
   <body>
     <main>
@@ -20,6 +21,16 @@
         <div class="scene">
           <img class="girl" src="./assets/images/girl.png" width="1280" height="720" alt="花の模様の髪を風になびかせ、両手を広げて笑う女の子" fetchpriority="high">
           <div class="petals" aria-hidden="true"></div>
+        </div>
+        <div class="corner-companions" role="img" aria-label="左下に並ぶ、ゆうちゃんとHaruの小さなキャラクター">
+          <span class="companion companion--yuu">
+            <img src="./assets/images/companions/yuu-open.png" width="1254" height="1254" alt="" decoding="async" fetchpriority="low">
+            <img class="companion-eyes" src="./assets/images/companions/yuu-closed.png" width="1254" height="1254" alt="" decoding="async" fetchpriority="low">
+          </span>
+          <span class="companion companion--haru">
+            <img src="./assets/images/companions/haru-open.png" width="1254" height="1254" alt="" decoding="async" fetchpriority="low">
+            <img class="companion-eyes" src="./assets/images/companions/haru-closed.png" width="1254" height="1254" alt="" decoding="async" fetchpriority="low">
+          </span>
         </div>
         <button class="motion-toggle" type="button" aria-pressed="false" hidden><span class="motion-symbol" aria-hidden="true">Ⅱ</span><span class="motion-label">動きを止める</span></button>
       </section>

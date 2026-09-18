@@ -68,6 +68,28 @@ h1 > span > span:nth-child(5) { --letter: 4; }
   animation: petal-turn calc(var(--duration) * 1.15) ease-in-out infinite alternate;
   animation-delay: var(--phase);
 }
+.corner-companions {
+  position: absolute;
+  z-index: 1;
+  left: clamp(1.25rem, 4vw, 5rem);
+  bottom: 1.9rem;
+  width: 164px;
+  height: 90px;
+  pointer-events: none;
+}
+.companion { position: absolute; bottom: 0; aspect-ratio: 1; }
+.companion--yuu { left: 0; width: 90px; z-index: 1; }
+.companion--haru { left: 90px; bottom: 6px; width: 74px; }
+.companion img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+/* Closed-mouth source files contain heads only. Keep the base/body fixed,
+   and reveal just the eye area in the identical 1254 × 1254 coordinate frame. */
+.companion-eyes { visibility: hidden; }
+.companion--yuu .companion-eyes { clip-path: inset(46% 28% 43.5% 35%); }
+.companion--haru .companion-eyes {
+  clip-path: polygon(23.5% 32%, 75% 32%, 75% 55.5%, 60% 55.5%, 60% 54.8%, 44% 54.8%, 44% 55.5%, 23.5% 55.5%);
+}
+.companion.is-blinking .companion-eyes { visibility: visible; }
+.is-paused .companion.is-blinking .companion-eyes { visibility: hidden; }
 .motion-toggle {
   position: absolute;
   z-index: 3;
@@ -120,6 +142,19 @@ h1 > span > span:nth-child(5) { --letter: 4; }
   .petal[data-mobile="false"] { display: none; }
   .petal-drift { animation-name: petal-drift-mobile; }
   .motion-toggle { right: 50%; transform: translateX(50%); bottom: 1.25rem; white-space: nowrap; }
+  .corner-companions { left: 8px; bottom: 16px; width: 112px; height: 64px; }
+  .companion--yuu { width: 64px; }
+  .companion--haru { left: 58px; bottom: 5px; width: 54px; }
+}
+@media (max-width: 389px) {
+  .corner-companions { left: 5px; width: 100px; height: 60px; }
+  .companion--yuu { width: 60px; }
+  .companion--haru { left: 50px; width: 50px; }
+}
+@media (max-width: 360px) {
+  .corner-companions { left: 3px; bottom: 12px; width: 82px; height: 54px; }
+  .companion--yuu { width: 54px; }
+  .companion--haru { left: 38px; bottom: 5px; width: 44px; }
 }
 @media (max-width: 700px) and (min-height: 900px) { .scene { bottom: 19%; } }
 @keyframes petal-drift-mobile {
@@ -133,4 +168,5 @@ h1 > span > span:nth-child(5) { --letter: 4; }
   .petal { opacity: var(--opacity, .8); }
   .petal img { transform: rotate(var(--angle)) scale(var(--scale)); }
   .motion-toggle { display: none; }
+  .companion.is-blinking .companion-eyes { visibility: hidden; }
 }

@@ -53,5 +53,25 @@
     "original": "assets/originals/sakura/10.png",
     "web": "dist/assets/images/sakura-10.png",
     "sha256": "04496afeaa2bc5db34e70091a289470eacdee23cd66ea04d6e8bb3997b959ea8"
+  },
+  {
+    "original": "assets/originals/companions/yuu-open.png",
+    "web": "dist/assets/images/companions/yuu-open.png",
+    "sha256": "c1bcf37800f75334467d2ec084857ea4c3c61ceb13916edde404b988270b46f0"
+  },
+  {
+    "original": "assets/originals/companions/haru-open.png",
+    "web": "dist/assets/images/companions/haru-open.png",
+    "sha256": "1546bd5e2df84f1fd051111b475117c0936767960a0cda714fd873debcfed416"
+  },
+  {
+    "original": "assets/originals/companions/yuu-closed.png",
+    "web": "dist/assets/images/companions/yuu-closed.png",
+    "sha256": "8fc672a882869764f980b21dd72e25a3d308256de30499ccfadeaf5dc9d32447"
+  },
+  {
+    "original": "assets/originals/companions/haru-closed.png",
+    "web": "dist/assets/images/companions/haru-closed.png",
+    "sha256": "3be56e47142fe5e73c572c3569148ba869a8d143afec02c64f1b13c9883535d7"
   }
 ]
