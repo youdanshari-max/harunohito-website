@@ -70,11 +70,12 @@ h1 > span > span:nth-child(5) { --letter: 4; }
 .corner-companions {
   position: absolute;
   z-index: 1;
-  left: calc(8.5% + clamp(3.85rem, 6.9vw, 7.7rem) * 1.6);
-  bottom: .9rem;
+  left: calc(8.5% + clamp(3.85rem, 6.9vw, 7.7rem) * .75);
+  bottom: .4rem;
   width: 282px;
   height: 162px;
   pointer-events: none;
+  filter: saturate(.9) contrast(.96);
 }
 .companion { position: absolute; bottom: 0; aspect-ratio: 1; }
 .companion--yuu { left: 0; width: 162px; z-index: 1; }
@@ -107,11 +108,11 @@ h1 > span > span:nth-child(5) { --letter: 4; }
 @media (min-width: 1800px) {
   .brand { left: calc(50% - 46rem); }
   .scene { left: calc(50% - 28rem); }
-  .corner-companions { left: calc(50% - 46rem + 7.7rem * 1.6); }
+  .corner-companions { left: calc(50% - 46rem + 7.7rem * .75); }
 }
 /* Keep the larger pair clear of the girl on narrower desktop screens. */
 @media (min-width: 701px) and (max-width: 1100px) {
-  .corner-companions { left: calc(8.5% + clamp(3.85rem, 6.9vw, 7.7rem) * .9); }
+  .corner-companions { left: calc(8.5% + clamp(3.85rem, 6.9vw, 7.7rem) * .15); }
 }
 @media (max-width: 700px) {
   .first-view { min-height: 40rem; }
