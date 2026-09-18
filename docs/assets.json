@@ -1,0 +1,57 @@
+[
+  {
+    "original": "assets/originals/girl/桜なし.png",
+    "web": "dist/assets/images/girl.png",
+    "sha256": "4a3d5f2f9583cae5bb9ca5662471110c1faf9f8e8c4c5d32fc7fdf613dd11e0b"
+  },
+  {
+    "original": "assets/originals/sakura/1.png",
+    "web": "dist/assets/images/sakura-01.png",
+    "sha256": "be7555fe045168675e417965aca68c653ad96e120385347c9cde5b49ff0d5ca0"
+  },
+  {
+    "original": "assets/originals/sakura/2.png",
+    "web": "dist/assets/images/sakura-02.png",
+    "sha256": "44491940a0478b05a0c7b10d3a456ea47cef3cd57221d0c4813e8c681add293b"
+  },
+  {
+    "original": "assets/originals/sakura/3.png",
+    "web": "dist/assets/images/sakura-03.png",
+    "sha256": "e2104f11d289ef60fdeb41eba4f38f68aeb0123e66574b47e16f96a95c02fb1b"
+  },
+  {
+    "original": "assets/originals/sakura/4.png",
+    "web": "dist/assets/images/sakura-04.png",
+    "sha256": "a1ecc6f0bbdd5cfcd83109831aadc411a4b3dfb0f45d153795af5046ce315481"
+  },
+  {
+    "original": "assets/originals/sakura/5.png",
+    "web": "dist/assets/images/sakura-05.png",
+    "sha256": "db72fad88f81ff5d430d1f6182085f552b74ebfec14d296d7321ea39204766da"
+  },
+  {
+    "original": "assets/originals/sakura/6.png",
+    "web": "dist/assets/images/sakura-06.png",
+    "sha256": "d601b658f87dd3d4723110e91d423e62e3a0cf384d6a1c7848f46b143b68ab8d"
+  },
+  {
+    "original": "assets/originals/sakura/7.png",
+    "web": "dist/assets/images/sakura-07.png",
+    "sha256": "4fc1e56daf4d45dafe437085ecf6582120878bde42775125c16fbf19b63ddbb8"
+  },
+  {
+    "original": "assets/originals/sakura/8.png",
+    "web": "dist/assets/images/sakura-08.png",
+    "sha256": "bf52f57aec20f51b8f491bd0a2dc02b6b7ac7d187cf28ad0e2f421c6592a1205"
+  },
+  {
+    "original": "assets/originals/sakura/9.png",
+    "web": "dist/assets/images/sakura-09.png",
+    "sha256": "c62dae2786f94ffdf20c9d6f8b05f8da125db5650df4aba549f5bc7e8a8f8762"
+  },
+  {
+    "original": "assets/originals/sakura/10.png",
+    "web": "dist/assets/images/sakura-10.png",
+    "sha256": "04496afeaa2bc5db34e70091a289470eacdee23cd66ea04d6e8bb3997b959ea8"
+  }
+]
