@@ -27,7 +27,7 @@ python3 -m http.server 4173 --bind 127.0.0.1 --directory dist
 
 - `dist/index.html`: ブランド名、肩書き、ページ情報。
 - `dist/styles/main.css`: 色、文字サイズ、配置、PC・スマートフォンの表示。
-- `dist/scripts/main.js`: 桜10枚の出現時刻・速度・移動量・回転・スマートフォンの表示対象。
+- `dist/scripts/main.js`: 桜の配置・出現間隔・速度・移動量・回転・顔の禁止エリア。
 - `docs/assets.json`: 原本と表示用コピーの対応、SHA-256。
 - `docs/design-notes.md`: 試作の意図と調整方法。
 

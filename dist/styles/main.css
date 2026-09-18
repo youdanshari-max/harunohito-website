@@ -33,12 +33,12 @@ button { font: inherit; }
   letter-spacing: .22em;
   line-height: 1.8;
 }
-h1 { margin: 0; font-size: clamp(3.5rem, 6.2vw, 7rem); line-height: 1.4; font-weight: 600; }
+h1 { margin: 0; font-size: clamp(3.85rem, 6.9vw, 7.7rem); line-height: 1.4; font-weight: 600; }
 h1 > span { display: flex; gap: .075em; }
 h1 > span > span {
   display: inline-block;
-  animation: name-arrives 1.9s cubic-bezier(.2,.65,.3,1) both;
-  animation-delay: calc(.35s + var(--letter, 0) * .19s);
+  animation: name-arrives 4.2s cubic-bezier(.2,.65,.3,1) both;
+  animation-delay: calc(.6s + var(--letter, 0) * .52s);
 }
 h1 > span > span:nth-child(2) { --letter: 1; }
 h1 > span > span:nth-child(3) { --letter: 2; }
@@ -53,12 +53,16 @@ h1 > span > span:nth-child(5) { --letter: 4; }
   transform: translateY(-43%);
   pointer-events: none;
 }
-.girl, .petals, .petal, .petal img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.girl, .petals, .petal, .petal-drift, .petal img { position: absolute; inset: 0; width: 100%; height: 100%; }
 .girl, .petal img { object-fit: contain; }
-.petal { animation: petal-arrives 3.8s ease-out var(--delay) both; }
+.petal {
+  transform: translate(var(--offset-x), var(--offset-y));
+  animation: petal-arrives 2.8s ease-out var(--delay) both;
+}
+.petal-drift { animation: petal-drift var(--duration) ease-in-out var(--phase) infinite alternate; }
 .petal img {
   transform-origin: var(--origin);
-  animation: petal-drift var(--duration) ease-in-out infinite alternate;
+  animation: petal-turn calc(var(--duration) * 1.15) ease-in-out infinite alternate;
   animation-delay: var(--phase);
 }
 .motion-toggle {
@@ -82,16 +86,21 @@ h1 > span > span:nth-child(5) { --letter: 4; }
 .motion-toggle:hover { border-color: #d5b8aa; }
 .motion-toggle:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
 .motion-symbol { width: .9rem; text-align: center; }
-.is-paused .petal, .is-paused .petal img, .is-paused h1 > span > span { animation-play-state: paused; }
+.is-paused .petal, .is-paused .petal-drift, .is-paused .petal img, .is-paused h1 > span > span { animation-play-state: paused; }
 @keyframes name-arrives {
-  from { opacity: 0; transform: translateY(.14em); }
+  from { opacity: 0; transform: translateY(.19em); }
+  75% { opacity: 1; transform: translateY(.025em); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes petal-arrives { from { opacity: 0; } to { opacity: var(--opacity, .8); } }
 @keyframes petal-drift {
-  0% { transform: translate(0, 0) rotate(var(--turn-start)); }
-  50% { transform: translate(var(--dx-mid), var(--dy-mid)) rotate(0deg); }
-  100% { transform: translate(var(--dx), var(--dy)) rotate(var(--turn-end)); }
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(var(--dx-mid), var(--dy-mid)); }
+  100% { transform: translate(var(--dx), var(--dy)); }
+}
+@keyframes petal-turn {
+  from { transform: rotate(var(--turn-start)) scale(var(--scale)); }
+  to { transform: rotate(var(--turn-end)) scale(var(--scale)); }
 }
 @media (min-width: 1800px) {
   .brand { left: calc(50% - 46rem); }
@@ -101,21 +110,22 @@ h1 > span > span:nth-child(5) { --letter: 4; }
   .first-view { min-height: 40rem; }
   .brand { top: 13%; left: 0; width: 100%; text-align: center; transform: none; }
   .brand-caption { font-size: .875rem; letter-spacing: .15em; margin: 0 0 1rem; }
-  h1 { font-size: clamp(2.6rem, 11vw, 4.8rem); }
+  h1 { font-size: clamp(2.85rem, 12.2vw, 5.2rem); }
   h1 > span { justify-content: center; gap: .05em; }
   .scene { width: 155%; left: -30%; top: auto; bottom: 13%; transform: none; }
   .petal[data-mobile="false"] { display: none; }
-  .petal img { animation-name: petal-drift-mobile; }
+  .petal-drift { animation-name: petal-drift-mobile; }
   .motion-toggle { right: 50%; transform: translateX(50%); bottom: 1.25rem; white-space: nowrap; }
 }
 @media (max-width: 700px) and (min-height: 900px) { .scene { bottom: 19%; } }
 @keyframes petal-drift-mobile {
-  from { transform: translate(0, 0) rotate(var(--turn-start)); }
-  to { transform: translate(var(--dx-mid), var(--dy-mid)) rotate(var(--turn-end)); }
+  from { transform: translate(0, 0); }
+  to { transform: translate(var(--dx-mid), var(--dy-mid)); }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; }
   h1 > span > span { opacity: 1; transform: none; }
   .petal { opacity: var(--opacity, .8); }
+  .petal img { transform: rotate(var(--angle)) scale(var(--scale)); }
   .motion-toggle { display: none; }
 }
