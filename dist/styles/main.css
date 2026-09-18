@@ -36,14 +36,14 @@ button { font: inherit; }
 h1 { margin: 0; font-size: clamp(3.85rem, 6.9vw, 7.7rem); line-height: 1.4; font-weight: 600; }
 h1 > span {
   display: flex;
-  gap: var(--rest-gap, .075em);
-  /* Keep the initial reveal; after it, rest 27s and breathe for 5s. */
-  animation: name-breath 32s ease-in-out 6.9s infinite;
+  gap: .075em;
 }
 h1 > span > span {
   display: inline-block;
-  animation: name-arrives 4.2s cubic-bezier(.2,.65,.3,1) both;
-  animation-delay: calc(.6s + var(--letter, 0) * .52s);
+  animation: name-arrives 4.2s cubic-bezier(.2,.65,.3,1) both,
+    name-echo 32s ease-in-out infinite;
+  animation-delay: calc(.6s + var(--letter, 0) * .52s),
+    calc(6.9s + var(--letter, 0) * .18s);
 }
 h1 > span > span:nth-child(2) { --letter: 1; }
 h1 > span > span:nth-child(3) { --letter: 2; }
@@ -91,15 +91,15 @@ h1 > span > span:nth-child(5) { --letter: 4; }
 .motion-toggle:hover { border-color: #d5b8aa; }
 .motion-toggle:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
 .motion-symbol { width: .9rem; text-align: center; }
-.is-paused .petal, .is-paused .petal-drift, .is-paused .petal img, .is-paused h1 > span, .is-paused h1 > span > span { animation-play-state: paused; }
+.is-paused .petal, .is-paused .petal-drift, .is-paused .petal img, .is-paused h1 > span > span { animation-play-state: paused; }
 @keyframes name-arrives {
   from { opacity: 0; transform: translateY(.19em); }
   75% { opacity: 1; transform: translateY(.025em); }
   to { opacity: 1; transform: translateY(0); }
 }
-@keyframes name-breath {
-  0%, 84.375%, 100% { transform: translateY(0) scale(1); gap: var(--rest-gap, .075em); opacity: 1; }
-  92.1875% { transform: translateY(-.075em) scale(1.025); gap: .115em; opacity: .94; }
+@keyframes name-echo {
+  0%, 81.25%, 93.75%, 100% { opacity: 1; transform: translateY(0); }
+  84.375% { opacity: .74; transform: translateY(.13em); }
 }
 @keyframes petal-arrives { from { opacity: 0; } to { opacity: var(--opacity, .8); } }
 @keyframes petal-drift {
@@ -122,7 +122,6 @@ h1 > span > span:nth-child(5) { --letter: 4; }
   h1 { font-size: clamp(2.85rem, 12.2vw, 5.2rem); }
   h1 > span { justify-content: center; gap: .05em; }
   .scene { width: 155%; left: -27%; top: auto; bottom: 13%; transform: none; }
-  h1 > span { --rest-gap: .05em; }
   .petal { animation-delay: var(--mobile-delay); }
   .petal[data-mobile="false"] { display: none; }
   .petal-drift { animation-name: petal-drift-mobile; }
