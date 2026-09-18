@@ -106,7 +106,7 @@ const toggle = document.querySelector('.motion-toggle');
 const view = document.querySelector('.first-view');
 const nameLetters = [...document.querySelectorAll('#brand-name > span > span')];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-const replayInterval = 34000; // The last letter finishes at ~6.9s, then rests ~27s.
+const replayInterval = 21000; // The last letter finishes at ~6.9s, then rests ~14s.
 let replayTimer;
 let remaining = replayInterval;
 let scheduledAt;
