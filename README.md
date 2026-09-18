@@ -1,7 +1,7 @@
 # ハルノヒト
 
 「ちいさなデジタル工房」を肩書きに持つ、ハルノヒト公式ホームページ。
-まずはトップページのファーストビューを試作し、少しずつ育てます。
+完成したファーストビューと「お問い合わせ＋ゆうちゃんのお便り」のエンディングを土台に、少しずつ育てます。一般公開はまだ行っていません。
 
 ## 構成
 
@@ -29,6 +29,8 @@ python3 -m http.server 4173 --bind 127.0.0.1 --directory dist
 - `dist/styles/main.css`: 色、文字サイズ、配置、PC・スマートフォンの表示。
 - `dist/scripts/main.js`: 桜の配置・出現間隔・速度・移動量・回転・顔の禁止エリア。
 - `dist/scripts/companions.js`: PC左下の2人の目ぱち、時間差、OS設定・画面幅への対応。
+- `dist/styles/ending.css`: エンディング専用の余白・文字・ボタン・PC／スマートフォン表示。
+- `dist/scripts/ending.js`: エンディング専用の目ぱち。画面外・非表示タブ・OSの「動きを減らす」設定では休止。
 - `docs/assets.json`: 原本と表示用コピーの対応、SHA-256。
 - `docs/design-notes.md`: 試作の意図と調整方法。
 
@@ -36,8 +38,21 @@ python3 -m http.server 4173 --bind 127.0.0.1 --directory dist
 
 次のページは、たとえば `dist/about/index.html` として追加できます。
 共通の色や文字の設定は `styles/main.css` に集めています。
-今回、下層ページやリンク先のないメニューは作っていません。
-お問い合わせの送信機能が必要になった段階で、その仕組みを選びます。
+トップページ内に内容を増やすときは、`dist/index.html` の「Future sections belong here」のコメント位置へ、独立したセクションを追加します。
+`.first-view` の中へは入れず、最後の `.ending` の手前に並べます。
+
+## エンディングの文章とリンクを変えるとき
+
+`dist/index.html` の「Ending copy and destinations」から始まる区画に集めています。
+お礼の文は `.ending-title` と `.ending-message`、各入口の表示名は `.ending-path-title`、説明は `.ending-description`、ボタンの文字と行き先は `.ending-link` の内容と `href` を変更します。
+JavaScriptを変更せずに編集でき、JavaScriptが動かない場合も文章・画像・リンクを表示できます。
+お問い合わせは `https://www.reservestock.jp/inquiry/58391`、お便りは `https://www.reservestock.jp/subscribe/160983`。同じタブで移動し、ブラウザの戻る操作でサイトに戻れます。
+サイト内ではフォーム入力を受け付けたり保存したりしません。
+
+エンディングのキャラクターは `.ending-character` を使い、トップの `.companion` と分離しています。
+素材は既存の同じPNGを参照します。PC・スマートフォンの両方で表示し、目の部分だけを0.22秒切り替えるため、体や輪郭が跳ねません。
+2人が交互に、3.8〜5.8秒の待ち時間を挟んでまばたきします。各人は約8〜12秒ごとが目安です。
+画面にキャラクターが半分以上見え、素材の準備ができた場合だけ動かし、OS設定時は開き目の静止表示になります。
 
 ## 公開するとき
 

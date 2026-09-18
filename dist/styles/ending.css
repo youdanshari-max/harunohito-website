@@ -1,0 +1,83 @@
+/* Independent ending: no selectors or layout changes for the completed first view. */
+.ending {
+  padding: 100px 32px 64px;
+  color: var(--ink);
+  background: linear-gradient(var(--paper), #faf1e8);
+  text-align: center;
+}
+.ending-inner { max-width: 880px; margin: 0 auto; }
+.ending-companions {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 auto 36px;
+  filter: saturate(.9) contrast(.96);
+}
+.ending-character { position: relative; display: block; flex: 0 0 auto; aspect-ratio: 1; }
+.ending-character--yuu { width: 162px; }
+.ending-character--haru { width: 126px; transform: translateY(4px); }
+.ending-character img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.ending-character .ending-eyes { position: absolute; inset: 0; visibility: hidden; }
+/* The difference PNGs contain heads only. Overlay the eyes, leaving body and outline fixed. */
+.ending-character--yuu .ending-eyes { clip-path: inset(46% 28% 43.5% 35%); }
+.ending-character--haru .ending-eyes {
+  clip-path: polygon(23.5% 32%, 75% 32%, 75% 55.5%, 60% 55.5%, 60% 54.8%, 44% 54.8%, 44% 55.5%, 23.5% 55.5%);
+}
+.ending-character.is-blinking .ending-eyes { visibility: visible; }
+.ending-title {
+  margin: 0;
+  font-size: clamp(1.3rem, 2.1vw, 1.8rem);
+  line-height: 1.9;
+  font-weight: 500;
+  letter-spacing: .06em;
+}
+.ending-title span { display: inline-block; }
+.ending-message { margin: 18px 0 0; font-size: .95rem; line-height: 2; color: var(--quiet-ink); }
+.ending-paths { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 58px; }
+.ending-path { display: flex; flex-direction: column; align-items: center; padding: 4px 26px; }
+.ending-path + .ending-path { border-left: 1px solid #dec9b9; }
+.ending-path-title { margin: 0; font-size: 1.1rem; font-weight: 500; letter-spacing: .07em; }
+.ending-description { margin: 16px 0 26px; color: var(--quiet-ink); font-size: .9rem; line-height: 1.9; }
+.ending-description span { display: inline-block; }
+.ending-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: auto;
+  min-height: 54px;
+  width: 100%;
+  max-width: 340px;
+  padding: 14px 18px;
+  border: 1px solid #bd8c7e;
+  border-radius: 8px;
+  color: var(--ink);
+  background: #fffaf5;
+  text-decoration: none;
+  font-size: .95rem;
+  line-height: 1.7;
+}
+.ending-link:hover { background: #f5e5d9; border-color: var(--ink); }
+.ending-link:focus-visible { outline: 3px solid var(--ink); outline-offset: 5px; }
+.ending-link-note { margin: 30px auto 0; color: var(--quiet-ink); font-size: .75rem; line-height: 1.9; }
+.ending-footer { padding: 28px 24px 32px; background: #faf1e8; color: var(--quiet-ink); text-align: center; }
+.ending-footer p { margin: 0; font-size: .85rem; letter-spacing: .2em; }
+@media (max-width: 700px) {
+  .ending { padding: 76px 24px 32px; }
+  .ending-companions { gap: 8px; margin-bottom: 30px; }
+  .ending-character--yuu { width: 140px; }
+  .ending-character--haru { width: 108px; transform: translateY(3.5px); }
+  .ending-title { font-size: clamp(1.05rem, 4.6vw, 1.4rem); letter-spacing: .02em; }
+  .ending-message { font-size: .85rem; margin-top: 16px; }
+  .ending-paths { grid-template-columns: 1fr; gap: 36px; margin-top: 44px; }
+  .ending-path { padding: 0; }
+  .ending-path + .ending-path { border-left: 0; }
+  .ending-description { max-width: 21em; margin: 12px 0 18px; }
+  .ending-link { padding-inline: 12px; }
+  .ending-link-note { max-width: 23em; margin-top: 28px; }
+  .ending-footer { padding-bottom: max(28px, env(safe-area-inset-bottom)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ending-character.is-blinking .ending-eyes { visibility: hidden; }
+}

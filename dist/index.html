@@ -8,8 +8,10 @@
     <title>ハルノヒト｜ちいさなデジタル工房</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23fffaf5'/%3E%3Cpath d='M8 24C4 13 12 6 24 7C25 18 20 26 8 24Z' fill='none' stroke='%23d8715f' stroke-width='2.5'/%3E%3Cpath d='m19 8 1 5 5-1' fill='none' stroke='%23d8715f' stroke-width='2.5'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/ending.css">
     <script src="./scripts/main.js" defer></script>
     <script src="./scripts/companions.js" defer></script>
+    <script src="./scripts/ending.js" defer></script>
   </head>
   <body>
     <main>
@@ -33,6 +35,40 @@
           </span>
         </div>
       </section>
+      <!-- Future sections belong here, between the completed first view and the ending. -->
+
+      <!-- Ending copy and destinations: edit the text and href values in this section. -->
+      <section class="ending" id="ending" aria-labelledby="ending-title">
+        <div class="ending-inner">
+          <div class="ending-companions" role="img" aria-label="並んでほほえむ、ゆうちゃんとHaru">
+            <span class="ending-character ending-character--yuu">
+              <img src="./assets/images/companions/yuu-open.png" width="1254" height="1254" alt="" loading="lazy" decoding="async">
+              <img class="ending-eyes" src="./assets/images/companions/yuu-closed.png" width="1254" height="1254" alt="" loading="lazy" decoding="async">
+            </span>
+            <span class="ending-character ending-character--haru">
+              <img src="./assets/images/companions/haru-open.png" width="1254" height="1254" alt="" loading="lazy" decoding="async">
+              <img class="ending-eyes" src="./assets/images/companions/haru-closed.png" width="1254" height="1254" alt="" loading="lazy" decoding="async">
+            </span>
+          </div>
+          <h2 class="ending-title" id="ending-title"><span>ここまで遊びにきてくれて、</span><span>ありがとう。</span></h2>
+          <p class="ending-message">この小さな工房を、少しずつ育てています。</p>
+
+          <div class="ending-paths">
+            <div class="ending-path">
+              <h3 class="ending-path-title">お問い合わせ</h3>
+              <p class="ending-description">ご相談やメッセージは、こちらから。</p>
+              <a class="ending-link" href="https://www.reservestock.jp/inquiry/58391">お問い合わせ<span aria-hidden="true"> →</span></a>
+            </div>
+            <div class="ending-path">
+              <h3 class="ending-path-title">ゆうちゃんのお便り</h3>
+              <p class="ending-description"><span>AIのこと、暮らしのことなどを</span><span>お届けしています。</span></p>
+              <a class="ending-link" href="https://www.reservestock.jp/subscribe/160983">ゆうちゃんのお便りを受け取る<span aria-hidden="true"> →</span></a>
+            </div>
+          </div>
+          <p class="ending-link-note">お問い合わせ・お便りの登録は、リザストのページへつながります。</p>
+        </div>
+      </section>
     </main>
+    <footer class="ending-footer"><p>ハルノヒト</p></footer>
   </body>
 </html>
