@@ -1,0 +1,29 @@
+/* Scoped to the independent Voice PC section. */
+.voice-service { padding: 110px 32px 90px; background: var(--paper); color: var(--ink); }
+.voice-service-inner { max-width: 960px; margin: 0 auto; }
+.voice-service-header { text-align: center; margin-bottom: 64px; }
+.voice-service-header h2 { margin: 0; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 500; letter-spacing: .12em; }
+.voice-service-header p { margin: 24px 0 0; color: var(--quiet-ink); font-size: 1rem; line-height: 2.1; }
+.voice-service-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; }
+.voice-service-option { display: flex; flex-direction: column; align-items: stretch; min-width: 0; }
+.voice-service-option > img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.voice-service-option h3 { margin: 28px 0 18px; font-size: clamp(1rem, 1.6vw, 1.2rem); line-height: 1.9; font-weight: 500; }
+.voice-service-option h3 span { display: block; margin-bottom: 4px; font-size: .85rem; letter-spacing: .08em; color: var(--quiet-ink); }
+.voice-service-description { margin: 0; color: var(--quiet-ink); font-size: .95rem; line-height: 2; }
+.voice-service-schedule { margin: 14px 0 0; color: var(--quiet-ink); font-size: .85rem; line-height: 1.9; }
+.voice-service-price { margin: auto 0 0; padding-top: 26px; font-size: 1.65rem; letter-spacing: .04em; }
+.voice-service-price span { margin-left: 3px; font-size: .95rem; }
+.voice-service-link { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 54px; padding: 14px 18px; margin-top: 22px; border: 1px solid #bd8c7e; border-radius: 8px; background: var(--paper); color: var(--ink); font: inherit; font-size: .95rem; line-height: 1.7; text-decoration: none; }
+.voice-service-link:disabled { color: var(--quiet-ink); border-color: #d7c6ba; background: #f5eee7; cursor: default; }
+.voice-service-link[href]:hover { background: #f5e5d9; border-color: var(--ink); }
+.voice-service-link:focus-visible { outline: 3px solid var(--ink); outline-offset: 5px; }
+.voice-service-note { margin: 10px 0 0; text-align: center; font-size: .75rem; color: var(--quiet-ink); line-height: 1.9; }
+@media (max-width: 700px) {
+ .voice-service { padding: 76px 24px 56px; }
+ .voice-service-header { margin-bottom: 40px; }
+ .voice-service-header h2 { font-size: 1.8rem; }
+ .voice-service-header p { font-size: .9rem; margin-top: 20px; }
+ .voice-service-options { grid-template-columns: 1fr; gap: 60px; max-width: 440px; margin: 0 auto; }
+ .voice-service-option h3 { margin-top: 22px; font-size: 1.05rem; }
+ .voice-service-description { font-size: .9rem; }
+}

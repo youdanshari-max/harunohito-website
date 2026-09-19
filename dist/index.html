@@ -9,6 +9,8 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23fffaf5'/%3E%3Cpath d='M8 24C4 13 12 6 24 7C25 18 20 26 8 24Z' fill='none' stroke='%23d8715f' stroke-width='2.5'/%3E%3Cpath d='m19 8 1 5 5-1' fill='none' stroke='%23d8715f' stroke-width='2.5'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/ending.css">
+    <link rel="stylesheet" href="./styles/services.css">
+    <script src="./scripts/services.js" defer></script>
     <script src="./scripts/main.js" defer></script>
     <script src="./scripts/companions.js" defer></script>
     <script src="./scripts/ending.js" defer></script>
@@ -36,6 +38,36 @@
         </div>
       </section>
       <!-- Future sections belong here, between the completed first view and the ending. -->
+
+      <!-- Voice PC: edit copy, prices and each data-application-url here. -->
+      <section class="voice-service" id="voice-pc" aria-labelledby="voice-service-title">
+        <div class="voice-service-inner">
+          <header class="voice-service-header">
+            <h2 id="voice-service-title">声でパソコン</h2>
+            <p>AIと話しながら、<br>一緒にパソコンを使える環境を整える個別サポートです。</p>
+          </header>
+          <div class="voice-service-options">
+            <article class="voice-service-option" aria-labelledby="voice-zoom-title">
+              <img src="./assets/images/services/voice-pc-zoom.png" width="940" height="788" alt="声でパソコン・Zoom。ゆうちゃんとHaruが並ぶAI個別設定のご案内" loading="lazy" decoding="async">
+              <h3 id="voice-zoom-title"><span>声でパソコン</span>AI個別設定 90分【Zoom】</h3>
+              <p class="voice-service-description">オンラインで、パソコン環境やChatGPTの状態を一緒に確認しながら、AIを使いやすい環境に整えます。</p>
+              <p class="voice-service-schedule">申込後に日程を調整します。</p>
+              <p class="voice-service-price">15,000<span>円</span></p>
+              <button class="voice-service-link" type="button" disabled data-application-url="" aria-describedby="voice-zoom-note">詳しく見る・申し込む<span aria-hidden="true"> →</span></button>
+              <p class="voice-service-note" id="voice-zoom-note">申込ページは準備中です。</p>
+            </article>
+            <article class="voice-service-option" aria-labelledby="voice-in-person-title">
+              <img src="./assets/images/services/voice-pc-in-person.png" width="940" height="788" alt="声でパソコン・対面。ゆうちゃんとHaruが並ぶAI個別設定のご案内" loading="lazy" decoding="async">
+              <h3 id="voice-in-person-title"><span>声でパソコン</span>AI個別設定 90分【対面】</h3>
+              <p class="voice-service-description">実際のパソコンを目の前で確認しながら、AIを使いやすい環境に整えます。</p>
+              <p class="voice-service-schedule">申込後に日程を調整します。</p>
+              <p class="voice-service-price">18,000<span>円</span></p>
+              <button class="voice-service-link" type="button" disabled data-application-url="" aria-describedby="voice-in-person-note">詳しく見る・申し込む<span aria-hidden="true"> →</span></button>
+              <p class="voice-service-note" id="voice-in-person-note">申込ページは準備中です。</p>
+            </article>
+          </div>
+        </div>
+      </section>
 
       <!-- Ending copy and destinations: edit the text and href values in this section. -->
       <section class="ending" id="ending" aria-labelledby="ending-title">
