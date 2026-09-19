@@ -1,5 +1,5 @@
 /* Set each application URL once in index.html: data-application-url="https://...".
-   Empty or invalid URLs keep the static disabled button and its preparation note. */
+   Empty or invalid URLs keep the static disabled button. */
 (() => {
   document.querySelectorAll('.voice-service-link[data-application-url]').forEach((button) => {
     const destination = button.dataset.applicationUrl.trim();

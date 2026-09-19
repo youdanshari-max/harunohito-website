@@ -8,8 +8,9 @@ Zoomは15,000円、対面は18,000円。どちらもAI個別設定90分、申込
 
 ## 申込URLの設定
 
-`dist/index.html` 内、Zoomと対面のボタンそれぞれの `data-application-url=""` に、確認済みのHTTPS申込URLを1回ずつ記入する。
-`dist/scripts/services.js` がリンクに置き換え、準備中表示を外す。同じタブで開く。
+`dist/index.html` 内、Zoomと対面のボタンそれぞれの `data-application-url` に、確認済みのHTTPS申込URLを1回ずつ記入する。
+Zoomは `https://www.reservestock.jp/stores/article/28497/98533`、対面は `https://www.reservestock.jp/stores/article/28497/98537`。
+`dist/scripts/services.js` がリンクに置き換え、同じタブで開く。
 未設定、不正なURL、JavaScriptが使えない場合は無効ボタンのまま。仮リンクはない。
 
 ## 素材と拡張
